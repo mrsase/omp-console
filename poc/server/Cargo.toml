@@ -1,0 +1,39 @@
+[package]
+name = "omp-web"
+version = "0.1.0"
+edition = "2024"
+description = "Web console for omp sessions over its RPC protocol"
+license = "MIT"
+
+[dependencies]
+axum = { version = "0.8", features = ["ws"] }
+base64 = "0.22"
+bytes = "1"
+futures-util = "0.3"
+parking_lot = "0.12"
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["raw_value"] }
+tokio = { version = "1", features = [
+  "rt-multi-thread",
+  "macros",
+  "process",
+  "io-util",
+  "sync",
+  "time",
+  "fs",
+  "net",
+  "signal",
+] }
+tower-http = { version = "0.6", features = ["fs"] }
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+uuid = { version = "1", features = ["v4"] }
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+panic = "abort"
+strip = true
+
+[dev-dependencies]
+tower = { version = "0.5", features = ["util"] }
