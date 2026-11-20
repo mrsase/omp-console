@@ -1,0 +1,25 @@
+{"id":"cmd-1","type":"prompt","message":"Run the fixture command.","images":[{"type":"image","mimeType":"image/jpeg","data":"ZmFrZQ=="}],"streamingBehavior":"steer"}
+{"id":"cmd-2","type":"steer","message":"Also check the log."}
+{"id":"cmd-3","type":"follow_up","message":"Then summarize."}
+{"id":"cmd-4","type":"remove_queued_message","message":"Then summarize.","queue":"followUp"}
+{"id":"cmd-5","type":"promote_queued_message","message":"Then summarize."}
+{"id":"cmd-6","type":"abort"}
+{"id":"cmd-7","type":"abort_and_restore_queue"}
+{"id":"cmd-8","type":"set_model","provider":"opencode-go","modelId":"deepseek-v4.1-flash"}
+{"id":"cmd-9","type":"set_thinking_level","level":"high"}
+{"id":"cmd-10","type":"set_session_name","name":"Fixture session"}
+{"id":"cmd-11","type":"new_session"}
+{"id":"cmd-12","type":"fork"}
+{"id":"cmd-13","type":"export_html"}
+{"id":"cmd-14","type":"compact"}
+{"id":"cmd-15","type":"set_auto_compaction","enabled":true}
+{"id":"cmd-16","type":"get_state"}
+{"id":"cmd-17","type":"get_session_stats"}
+{"id":"cmd-18","type":"get_messages"}
+{"id":"cmd-19","type":"get_available_models"}
+{"id":"cmd-20","type":"get_available_thinking_levels"}
+{"id":"cmd-21","type":"get_available_commands"}
+{"type":"extension_ui_response","id":"ui-select-1","value":"One"}
+{"type":"extension_ui_response","id":"ui-confirm-1","confirmed":true}
+{"type":"extension_ui_response","id":"ui-ask-1","answers":[{"id":"store","selectedOptions":["SQLite"],"customInput":"WAL mode"}]}
+{"type":"extension_ui_response","id":"ui-input-1","cancelled":true,"timedOut":false}

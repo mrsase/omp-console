@@ -4,3 +4,7 @@ web/dist/
 .DS_Store
 *.log
 .omp-fixtures/
+test-results/
+playwright-report/
+web/test-results/
+.vite/

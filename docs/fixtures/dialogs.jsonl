@@ -1,0 +1,13 @@
+{"type":"extension_ui_request","id":"ui-select-1","method":"select","title":"Pick a target","options":["One","Two"],"optionDetails":[{"description":"The first one"},{"description":"The second one"}],"timeout":30000}
+{"type":"extension_ui_request","id":"ui-confirm-1","method":"confirm","title":"Delete the draft?","message":"This cannot be undone.","timeout":15000}
+{"type":"extension_ui_request","id":"ui-input-1","method":"input","title":"API key","placeholder":"sk-…","secret":true,"timeout":60000}
+{"type":"extension_ui_request","id":"ui-editor-1","method":"editor","title":"Edit the prompt","prefill":"Draft text","promptStyle":true}
+{"type":"extension_ui_request","id":"ui-ask-1","method":"ask","timeout":60000,"questions":[{"id":"store","question":"Where should sessions live?","header":"Storage","options":[{"label":"SQLite","description":"One file, no new service"},{"label":"Redis","description":"Shared across instances"}],"multi":false,"recommended":0},{"id":"extras","question":"Which extras?","options":[{"label":"Search","preview":"Full-text search"},{"label":"Export","description":"Bulk CSV"}],"multi":true}]}
+{"type":"extension_ui_request","id":"ui-cancel-1","method":"cancel","targetId":"ui-select-1"}
+{"type":"extension_ui_request","id":"ui-notify-1","method":"notify","message":"Compaction finished","notifyType":"info"}
+{"type":"extension_ui_request","id":"ui-status-1","method":"setStatus","statusKey":"lint","statusText":"Running…"}
+{"type":"extension_ui_request","id":"ui-widget-2","method":"setWidget","widgetKey":"jobs","widgetLines":["build   running","test    queued"],"widgetPlacement":"aboveEditor"}
+{"type":"extension_ui_request","id":"ui-title-1","method":"setTitle","title":"Renamed session"}
+{"type":"extension_ui_request","id":"ui-editor-text-1","method":"set_editor_text","text":"Prefilled draft"}
+{"type":"extension_ui_request","id":"ui-url-1","method":"open_url","url":"https://example.test/authorize","launchUrl":"http://127.0.0.1:9000/r/abc","instructions":"Finish sign-in"}
+{"type":"session_info_update","title":"Fixture session","sessionId":"ses_fixture_0001"}

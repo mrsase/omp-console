@@ -1,0 +1,5 @@
+{"type":"future_frame_kind","payload":{"shape":"not yet negotiated"},"nested":[1,2,3]}
+{"type":"rpc_frame_error","originalType":"agent_end","error":"RPC frame exceeded the transport limit"}
+{"id":"cmd-busy","type":"response","command":"get_messages","success":false,"error":"session is busy","code":"session_busy"}
+{"id":"cmd-cap","type":"response","command":"prompt","success":false,"error":"cost cap reached","code":"cost_cap"}
+{"type":"subagent_lifecycle","payload":{"id":"sub-1","index":0,"agent":"explore","agentSource":"bundled","status":"started","description":"Reading the tree"}}
