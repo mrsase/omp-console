@@ -20,8 +20,8 @@
 | Release build | `cargo build --release --workspace` | ✅ `target/release/omp-console`, **3.2 MB** stripped |
 | File budget | `node tools/check-line-budget.mjs` | ✅ **102 files**, all ≤600 lines |
 
-`make verify` exits **0**. The run took 56.0 s on this machine, of which the release
-build was 30.2 s.
+`make verify` exits **0**. The final run took 67.6 s on this machine, of which the release
+build was 33.7 s.
 
 ```
 $ make verify
@@ -36,7 +36,7 @@ test result: ok. 8 passed; 0 failed
       Tests  61 passed (61)
 ...
 ✓ built in 1.50s
-    Finished `release` profile [optimized] target(s) in 30.23s
+    Finished `release` profile [optimized] target(s) in 33.73s
 line budget: 102 file(s) checked, all within 600 lines.
 ```
 

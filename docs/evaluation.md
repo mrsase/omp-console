@@ -29,7 +29,7 @@ release build, not estimates.
 | 10k events: heap | 3.9 → 14.8 MB (**+11.0 MB**) | same |
 | 10k events: scroll | 113 steps, no stall | same |
 | 10k stream duration | 2.32 s | same |
-| `make verify` | **exit 0**, 47.6 s | `docs/verification.md` |
+| `make verify` | **exit 0**, 67.6 s | `docs/verification.md` |
 | `make validate` | **exit 0**, 12 journeys | `docs/validation.md` |
 
 ### Performance baseline that forced a change
