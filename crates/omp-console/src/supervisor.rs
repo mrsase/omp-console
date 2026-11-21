@@ -303,6 +303,12 @@ mod tests {
         assert!(resolve_resume(dir.to_str().unwrap(), &cfg).is_err());
         assert!(resolve_resume(outside.to_str().unwrap(), &cfg).is_err());
         assert!(resolve_resume("../nope.jsonl", &cfg).is_err());
+        #[cfg(unix)]
+        {
+            let link = project.join("escape.jsonl");
+            std::os::unix::fs::symlink(&outside, &link).unwrap();
+            assert!(resolve_resume(link.to_str().unwrap(), &cfg).is_err());
+        }
         std::fs::remove_file(outside).unwrap();
         std::fs::remove_dir_all(root).unwrap();
     }

@@ -544,13 +544,17 @@ impl RpcThread {
                 Method::Cancel { target_id } => {
                     self.dialogs.write().expect("dialogs").remove(&target_id);
                 }
-                Method::Unknown { .. } => {}
-                _ => {
+                Method::Select { .. }
+                | Method::Confirm { .. }
+                | Method::Input { .. }
+                | Method::Editor { .. }
+                | Method::Ask { .. } => {
                     self.dialogs
                         .write()
                         .expect("dialogs")
                         .insert(id.to_string(), frame_envelope(&self.id, raw).into());
                 }
+                _ => {}
             }
         }
         let _ = method;

@@ -346,6 +346,7 @@ mod tests {
             r#"{"type":"set_auto_compaction","enabled":"yes"}"#,
             r#"{"type":"extension_ui_response","id":"ui-1","value":"x","confirmed":true}"#,
             r#"{"type":"extension_ui_response","id":"ui-1","cancelled":false}"#,
+            r#"{"id":"_omp_state","type":"get_state"}"#,
         ] {
             assert!(validate(raw).is_err(), "{raw}");
         }

@@ -108,6 +108,38 @@ async fn root_serves_html_and_unknown_api_is_json_404() {
 }
 
 #[tokio::test]
+async fn oversized_bodies_and_non_directory_browses_are_rejected() {
+    let root = tempfile::tempdir().unwrap();
+    let body = format!(
+        r#"{{"cwd":"{}","pad":"{}"}}"#,
+        root.path().display(),
+        "x".repeat(70 * 1024)
+    );
+    let response = app(root.path())
+        .oneshot(
+            Request::builder()
+                .method("POST")
+                .uri("/api/threads")
+                .header(header::HOST, "127.0.0.1:8787")
+                .header(header::ORIGIN, "http://127.0.0.1:8787")
+                .header(header::CONTENT_TYPE, "application/json")
+                .body(Body::from(body))
+                .unwrap(),
+        )
+        .await
+        .unwrap();
+    assert!(response.status().is_client_error());
+
+    let file = root.path().join("file.txt");
+    std::fs::write(&file, "x").unwrap();
+    let response = app(root.path())
+        .oneshot(get(&format!("/api/fs?path={}", file.display())))
+        .await
+        .unwrap();
+    assert_eq!(response.status(), StatusCode::BAD_REQUEST);
+}
+
+#[tokio::test]
 async fn recent_is_empty_for_a_fresh_root_and_rejects_traversal_resume() {
     let root = tempfile::tempdir().unwrap();
     let response = app(root.path())
