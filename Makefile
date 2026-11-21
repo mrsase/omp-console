@@ -14,7 +14,7 @@ WEB := web
 
 .PHONY: verify build test web-test web-install web-guard web-deps web-typecheck \
 	web-lint web-build e2e validate design-gate evaluate-gate ship-gate \
-	cargo-fmt cargo-test cargo-clippy cargo-release check-lines clean
+	cargo-fmt cargo-test cargo-clippy cargo-release cargo-debug check-lines clean
 
 # verify compiles the Rust workspace three times by design: `cargo test` (dev
 # profile), `cargo clippy --all-targets` (check profile), and the release build.
@@ -46,6 +46,11 @@ cargo-clippy:
 cargo-release:
 	$(CARGO) build --release --workspace
 
+# A fresh debug binary for the stub journey, rebuilt after the web assets so
+# the embedded bundle is not the build-script placeholder.
+cargo-debug:
+	$(CARGO) build --workspace
+
 # A clear failure when the web app is not scaffolded yet.
 web-guard:
 	@test -f $(WEB)/package.json || { \
@@ -74,8 +79,8 @@ web-build: web-deps
 	cd $(WEB) && $(BUN) run build
 
 # Playwright journey against the stub omp; needs installed deps and the bundle.
-e2e: web-install web-build
-	cd $(WEB) && $(BUN) run e2e
+e2e: web-install web-build cargo-debug
+	cd $(WEB) && OMP_CONSOLE_BIN=$(CURDIR)/target/debug/omp-console $(BUN) run e2e
 
 # Stub journey end to end; then record the manual live run.
 validate: e2e

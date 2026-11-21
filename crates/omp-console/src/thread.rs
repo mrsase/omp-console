@@ -427,6 +427,10 @@ impl RpcThread {
         if meta.success && matches!(meta.command.as_str(), "get_state" | "get_session_stats") {
             self.apply_meta_response(&meta.command, raw);
         }
+        if meta.success && meta.command == "set_session_name" {
+            self.send_internal(b"{\"id\":\"_omp_state\",\"type\":\"get_state\"}")
+                .await;
+        }
         self.push_raw(raw);
     }
 

@@ -28,7 +28,13 @@ pub async fn spawn(
     thinking: Option<&str>,
 ) -> Result<Spawned, ApiError> {
     let mut command = Command::new(&cfg.omp_bin);
-    command.arg("--mode").arg("rpc-ui").arg("--cwd").arg(cwd);
+    command
+        .arg("--mode")
+        .arg("rpc-ui")
+        .arg("--cwd")
+        .arg(cwd)
+        .arg("--session-dir")
+        .arg(&cfg.session_root);
     if cwd == cfg.home {
         command.arg("--allow-home");
     }

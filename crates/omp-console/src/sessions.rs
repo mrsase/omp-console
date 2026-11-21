@@ -122,16 +122,7 @@ fn scan(root: &Path) -> Vec<RecentSession> {
     let Ok(projects) = std::fs::read_dir(root) else {
         return Vec::new();
     };
-    for project in projects.flatten() {
-        let Ok(kind) = project.file_type() else {
-            continue;
-        };
-        if !kind.is_dir() {
-            continue;
-        }
-        let Ok(entries) = std::fs::read_dir(project.path()) else {
-            continue;
-        };
+    let mut collect = |entries: std::fs::ReadDir| {
         for entry in entries.flatten() {
             let name = entry.file_name();
             let name = name.to_string_lossy();
@@ -141,11 +132,26 @@ fn scan(root: &Path) -> Vec<RecentSession> {
             let Ok(meta) = entry.metadata() else {
                 continue;
             };
-            if !meta.is_file() {
-                continue;
+            if meta.is_file() {
+                files.push((meta.modified().unwrap_or(UNIX_EPOCH), entry.path()));
             }
-            files.push((meta.modified().unwrap_or(UNIX_EPOCH), entry.path()));
         }
+    };
+    for project in projects.flatten() {
+        let Ok(kind) = project.file_type() else {
+            continue;
+        };
+        if !kind.is_dir() {
+            continue;
+        }
+        if let Ok(entries) = std::fs::read_dir(project.path()) {
+            collect(entries);
+        }
+    }
+    // A custom --session-dir writes sessions directly in the root; the default
+    // root nests them per project. Support both.
+    if let Ok(entries) = std::fs::read_dir(root) {
+        collect(entries);
     }
     files.sort_unstable_by_key(|entry| std::cmp::Reverse(entry.0));
     files.truncate(SCAN_LIMIT);
@@ -220,6 +226,19 @@ mod tests {
         assert_eq!(header.cwd.as_deref(), Some("/work"));
         assert_eq!(header.title.as_deref(), Some("Fix the bug"));
         std::fs::remove_dir_all(dir).unwrap();
+    }
+
+    #[test]
+    fn scans_direct_and_nested_session_layouts() {
+        let root = std::env::temp_dir().join(format!("omp-console-scan-{}", std::process::id()));
+        let project = root.join("project");
+        std::fs::create_dir_all(&project).unwrap();
+        let body = "{\"type\":\"session\",\"id\":\"x\",\"cwd\":\"/work\"}\n";
+        std::fs::write(root.join("direct.jsonl"), body).unwrap();
+        std::fs::write(project.join("nested.jsonl"), body).unwrap();
+        let sessions = scan(&root);
+        assert_eq!(sessions.len(), 2);
+        std::fs::remove_dir_all(root).unwrap();
     }
 
     #[test]
