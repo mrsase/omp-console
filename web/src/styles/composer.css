@@ -1,0 +1,350 @@
+.composer {
+  position: relative;
+  border-top: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.composer-widgets {
+  display: grid;
+  gap: 1px;
+  padding: var(--s1) var(--s4) 0;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--muted);
+}
+
+.queue-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s1);
+  padding: var(--s2) var(--s4) 0;
+  max-height: 60px;
+  overflow-y: auto;
+}
+
+.queue-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  height: 24px;
+  padding: 0 var(--s1) 0 var(--s2);
+  border: 1px solid var(--line);
+  border-radius: var(--r-control);
+  background: var(--sunken);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-2);
+  max-width: 100%;
+}
+
+.queue-chip-kind {
+  font-size: 9.5px;
+  letter-spacing: 0.04em;
+  color: var(--warn);
+}
+
+.queue-chip[data-kind="followUp"] .queue-chip-kind {
+  color: var(--lane-tool);
+}
+
+.queue-chip[data-kind="sent"] .queue-chip-kind {
+  color: var(--ok);
+}
+
+.queue-chip-text {
+  max-width: 48ch;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.queue-chip button {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  border-radius: var(--r-control);
+  color: var(--muted);
+}
+
+.queue-chip button:hover {
+  background: var(--raised);
+  color: var(--ink);
+}
+
+.composer-field {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: var(--s2);
+  margin: var(--s2) var(--s4);
+  padding: var(--s2) var(--s2) var(--s2) 0;
+  border-left: 3px solid var(--accent);
+  background: var(--sunken);
+  border-radius: 0 var(--r-control) var(--r-control) 0;
+}
+
+.composer-glyph {
+  align-self: start;
+  padding-top: 1px;
+  width: 28px;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 15px;
+  color: var(--accent);
+  user-select: none;
+}
+
+.composer-input {
+  width: 100%;
+  min-height: 26px;
+  max-height: calc(12 * 1.5 * 15px);
+  resize: none;
+  overflow-y: auto;
+  background: transparent;
+  border: 0;
+  color: var(--ink);
+  font-size: 15px;
+  line-height: 1.5;
+  padding: 1px 0;
+}
+
+.composer-input::placeholder {
+  color: var(--faint);
+}
+
+.composer-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--s1);
+  padding: 0 var(--s4) var(--s2);
+}
+
+.composer-toolbar .spacer {
+  flex: 1;
+}
+
+.mode-control {
+  display: inline-flex;
+  border: 1px solid var(--line);
+  border-radius: var(--r-control);
+  overflow: hidden;
+}
+
+.mode-control button {
+  height: 28px;
+  padding: 0 var(--s2);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--muted);
+  border-right: 1px solid var(--line);
+}
+
+.mode-control button:last-child {
+  border-right: 0;
+}
+
+.mode-control button[aria-pressed="true"] {
+  background: var(--raised);
+  color: var(--ink);
+}
+
+.send-button {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s2);
+  height: 30px;
+  padding: 0 var(--s3);
+  border-radius: var(--r-control);
+  background: var(--accent);
+  color: var(--accent-ink);
+  font-size: 12.5px;
+  font-weight: 600;
+}
+
+.send-button kbd {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  opacity: 0.65;
+}
+
+.send-button:disabled {
+  opacity: 0.45;
+}
+
+.stop-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  height: 28px;
+  padding: 0 var(--s2);
+  border: 1px solid var(--err);
+  border-radius: var(--r-control);
+  color: var(--err);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+}
+
+.composer-state {
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  padding: 0 var(--s4) var(--s2);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--faint);
+}
+
+.composer-state .right {
+  margin-left: auto;
+  display: inline-flex;
+  gap: var(--s2);
+  align-items: center;
+}
+
+.composer-error {
+  color: var(--err);
+}
+
+.attachments {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--s2);
+  padding: var(--s1) var(--s4) 0 var(--s4);
+}
+
+.attachment {
+  position: relative;
+  width: 56px;
+  height: 56px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-control);
+  overflow: hidden;
+  background: var(--sunken);
+}
+
+.attachment img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.attachment-remove {
+  position: absolute;
+  top: 1px;
+  right: 1px;
+  display: grid;
+  place-items: center;
+  width: 16px;
+  height: 16px;
+  border-radius: var(--r-control);
+  background: var(--panel);
+  color: var(--ink);
+  font-size: 10px;
+}
+
+.attachment-meta {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 0 3px;
+  background: var(--panel);
+  font-family: var(--font-mono);
+  font-size: 8.5px;
+  color: var(--muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.drop-overlay {
+  position: absolute;
+  inset: var(--s1);
+  display: grid;
+  place-items: center;
+  border: 1px dashed var(--accent);
+  border-radius: var(--r-control);
+  background: var(--accent-soft);
+  color: var(--ink);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.slash-palette {
+  position: absolute;
+  left: var(--s4);
+  right: var(--s4);
+  bottom: calc(100% - var(--s1));
+  max-width: 560px;
+  max-height: 288px;
+  overflow-y: auto;
+  padding: var(--s1);
+  background: var(--raised);
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-sheet);
+  box-shadow: var(--shadow-sheet);
+  z-index: 40;
+}
+
+.palette-row {
+  display: grid;
+  grid-template-columns: minmax(90px, auto) minmax(0, 1fr) auto;
+  align-items: center;
+  gap: var(--s2);
+  width: 100%;
+  height: 32px;
+  padding: 0 var(--s2);
+  border-radius: var(--r-control);
+  text-align: left;
+}
+
+.palette-row[aria-selected="true"] {
+  background: var(--accent-soft);
+}
+
+.palette-name {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.palette-alias {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--faint);
+}
+
+.palette-description {
+  font-size: 12.5px;
+  color: var(--muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.palette-hint {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--faint);
+  white-space: nowrap;
+}
+
+@media (max-width: 639px) {
+  .composer-field {
+    margin: var(--s2);
+  }
+
+  .composer-toolbar,
+  .composer-state,
+  .queue-strip,
+  .composer-widgets {
+    padding-left: var(--s2);
+    padding-right: var(--s2);
+  }
+
+  .attachments {
+    padding-left: var(--s2);
+  }
+}

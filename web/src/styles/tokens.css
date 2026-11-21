@@ -1,0 +1,101 @@
+/* The only file allowed to contain colors. Theme: <html data-theme="light|dark">. */
+:root {
+  --bg: #12171b;
+  --panel: #171e24;
+  --raised: #1e272e;
+  --sunken: #0e1215;
+  --line: #2b363f;
+  --line-strong: #3d4b56;
+  --ink: #e8eef2;
+  --ink-2: #b9c6cf;
+  --muted: #8b9aa5;
+  --faint: #7f8e98;
+  --selection: #2e4650;
+
+  --accent: #e28a4a;
+  --accent-ink: #14181b;
+  --accent-soft: #e28a4a24;
+  --ok: #74c58c;
+  --warn: #d9a45b;
+  --err: #e88374;
+  --focus: var(--accent);
+
+  --lane-assistant: #74c9c0;
+  --lane-thinking: #d3ad6a;
+  --lane-tool: #8fb2e0;
+  --lane-system: #b49bdb;
+  --lane-you: var(--accent);
+
+  --approval-wash: #d9a45b1f;
+  --scrim: #0a0d0fcc;
+  --shadow-sheet: 0 18px 60px rgb(0 0 0 / 0.38);
+  --scrollbar: #33414b;
+  --scrollbar-hover: #465863;
+
+  --s1: 4px;
+  --s2: 8px;
+  --s3: 12px;
+  --s4: 16px;
+  --s5: 24px;
+  --s6: 32px;
+  --r-control: 3px;
+  --r-sheet: 6px;
+  --r-round: 999px;
+  --row-tool: 32px;
+  --row-system: 28px;
+  --row-rail: 48px;
+  --header: 52px;
+  --rail-w: 248px;
+  --plan-w: 320px;
+  --gutter-w: 64px;
+  --measure: 78ch;
+
+  --font-sans: "IBM Plex Sans", "IBM Plex Sans Fallback", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --motion-hover: 120ms;
+  --motion-press: 90ms;
+  --motion-sheet: 180ms;
+  --sheet-ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+:root[data-theme="light"] {
+  --bg: #edf0f1;
+  --panel: #f7f8f8;
+  --raised: #ffffff;
+  --sunken: #e3e7e8;
+  --line: #d3dadc;
+  --line-strong: #b6c1c5;
+  --ink: #11171a;
+  --ink-2: #33434b;
+  --muted: #4d5d65;
+  --faint: #5c6c74;
+  --selection: #cfe0e5;
+
+  --accent: #a8491f;
+  --accent-ink: #fff7f1;
+  --accent-soft: #a8491f14;
+  --ok: #1e6b3d;
+  --warn: #8a5a12;
+  --err: #a33422;
+
+  --lane-assistant: #1c6f68;
+  --lane-thinking: #8a5a12;
+  --lane-tool: #2b5d94;
+  --lane-system: #6b4a96;
+  --lane-you: var(--accent);
+
+  --approval-wash: #8a5a1214;
+  --scrim: #182025aa;
+  --shadow-sheet: 0 18px 60px rgb(20 30 35 / 0.18);
+  --scrollbar: #c2cccf;
+  --scrollbar-hover: #aab8bc;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-hover: 0ms;
+    --motion-press: 0ms;
+    --motion-sheet: 0ms;
+  }
+}

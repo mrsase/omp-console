@@ -4,8 +4,8 @@ omp-console is a local console for the `omp` agent harness. It is designed to be
 person on their own machine, on loopback, with no authentication. This document states what
 that design protects, what it does not, and how to report a problem.
 
-The project is in the design phase; no release exists yet. This policy describes the v1.0
-security model defined in `docs/v1-design.md` and `docs/adr/0002-architecture.md`.
+This policy describes the v1.0 security model defined in `docs/v1-design.md` and
+`docs/adr/0002-architecture.md`. v1.0.0 supports omp 18.x (tested 18.18.8).
 
 ## Assets
 
@@ -95,8 +95,8 @@ you expected instead. This project has no bug bounty and no dedicated security e
 
 ## Supported versions
 
-No version has been released yet. Once v1.0.0 ships, security fixes will target the latest
-release on the supported `omp` 18.x line. Running with
+v1.0.0 is the current release. Security fixes target the latest release on the supported
+`omp` 18.x line. Running with
 `OMP_CONSOLE_SKIP_VERSION_CHECK=1` against an unverified `omp` is unsupported for security
 reports unless the issue is in the console itself.
 

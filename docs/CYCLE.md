@@ -28,7 +28,7 @@ design ──▶ code ──▶ test ──▶ verify ──▶ validate ──�
 3. **Evidence, not intentions.** `validation.md` contains screenshots, measured numbers and
    the commands that produced them. No screenshot, no claim.
 4. **Claims are measured.** "Fast", "small", "tested" get numbers in `evaluation.md`.
-5. **The PoC is evidence.** `/Users/aligoley/workPlace/omp-web` is read-only and is preserved
+5. **The PoC is evidence.** `~/workPlace/omp-web` is read-only and is preserved
    in this repo on the `poc` branch at tag `poc-archive`.
 6. **The protocol is owned in one place.** Frame/command types live in `crates/omp-protocol`;
    the TypeScript mirror is checked against the same golden fixtures.

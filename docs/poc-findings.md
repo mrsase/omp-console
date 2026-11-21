@@ -1,6 +1,6 @@
 # PoC findings — `omp-web`
 
-Source: `/Users/aligoley/workPlace/omp-web` (read-only), archived here on `poc` / tag
+Source: `~/workPlace/omp-web` (read-only), archived here on `poc` / tag
 `poc-archive`. Protocol source of truth: the installed `omp` 18.18.8 package, whose
 TypeScript sources ship at
 `~/.bun/install/global/node_modules/@oh-my-pi/pi-coding-agent/src/modes/rpc/`

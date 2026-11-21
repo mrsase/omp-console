@@ -1,0 +1,201 @@
+.plan-panel {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  background: var(--panel);
+  min-height: 0;
+}
+
+.plan-head {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: var(--s2);
+  height: 40px;
+  padding: 0 var(--s3);
+  border-bottom: 1px solid var(--line);
+  background: var(--panel);
+}
+
+.plan-title {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.plan-count {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--muted);
+}
+
+.plan-head .spacer {
+  flex: 1;
+}
+
+.plan-body {
+  overflow-y: auto;
+  padding: var(--s3);
+  min-height: 0;
+}
+
+.plan-progress {
+  display: flex;
+  gap: 2px;
+  margin-bottom: var(--s3);
+}
+
+.plan-progress i {
+  flex: 1;
+  height: 2px;
+  background: var(--line-strong);
+}
+
+.plan-progress i[data-done="true"] {
+  background: var(--ok);
+}
+
+.plan-progress i[data-active="true"] {
+  background: var(--warn);
+}
+
+.plan-phase {
+  margin-bottom: var(--s3);
+}
+
+.plan-phase-name {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  margin-bottom: 2px;
+}
+
+.plan-task {
+  display: grid;
+  grid-template-columns: 14px minmax(0, 1fr);
+  align-items: start;
+  gap: var(--s2);
+  min-height: 32px;
+  padding: var(--s1) 0;
+  font-size: 13.5px;
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+.plan-mark {
+  display: grid;
+  place-items: center;
+  width: 14px;
+  height: 14px;
+  margin-top: 2px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  border: 1px solid var(--line-strong);
+  border-radius: var(--r-control);
+  color: var(--muted);
+}
+
+.plan-task[data-status="completed"] .plan-mark {
+  border-color: var(--ok);
+  color: var(--ok);
+}
+
+.plan-task[data-status="completed"] .plan-task-text {
+  color: var(--ink);
+}
+
+.plan-task[data-status="in_progress"] .plan-mark {
+  border-color: var(--warn);
+  color: var(--warn);
+  animation: pulse 900ms ease-in-out infinite;
+}
+
+.plan-task[data-status="blocked"] .plan-mark {
+  border-color: var(--err);
+  color: var(--err);
+}
+
+.plan-task-text {
+  min-width: 0;
+  overflow-wrap: anywhere;
+}
+
+.plan-task-note {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  color: var(--err);
+}
+
+.plan-empty {
+  display: grid;
+  justify-items: start;
+  gap: var(--s2);
+  padding: var(--s5) var(--s2);
+  color: var(--muted);
+}
+
+.plan-empty .instrument {
+  display: grid;
+  gap: 4px;
+  width: 40px;
+}
+
+.plan-empty .instrument i {
+  display: block;
+  height: 2px;
+  background: var(--lane-system);
+}
+
+.plan-empty .instrument i:nth-child(2) {
+  width: 26px;
+  opacity: 0.7;
+}
+
+.plan-empty .instrument i:nth-child(3) {
+  width: 14px;
+  opacity: 0.45;
+}
+
+.plan-empty strong {
+  color: var(--ink);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.plan-empty p {
+  font-size: 12.5px;
+  line-height: 1.5;
+  max-width: 30ch;
+}
+
+.plan-expand {
+  border: 1px solid var(--line);
+}
+
+.plan-scrim {
+  display: none;
+}
+
+@media (max-width: 1279px) {
+  .plan-scrim {
+    display: block;
+    position: fixed;
+    inset: var(--header) 0 0 0;
+    background: var(--scrim);
+    z-index: 44;
+  }
+}
+
+.plan-panel[data-expanded="true"] {
+  position: fixed;
+  top: var(--header);
+  right: 0;
+  bottom: 0;
+  width: min(560px, 100vw);
+  border-left: 1px solid var(--line-strong);
+  box-shadow: var(--shadow-sheet);
+  z-index: 46;
+}
