@@ -1,0 +1,21 @@
+[workspace]
+members = ["crates/omp-protocol", "crates/omp-console"]
+resolver = "3"
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.95"
+license = "MIT"
+repository = "https://github.com/mrsase/omp-console"
+
+[workspace.dependencies]
+serde = { version = "1", features = ["derive"] }
+serde_json = { version = "1", features = ["raw_value"] }
+base64 = "0.22"
+
+[profile.release]
+lto = "thin"
+codegen-units = 16
+panic = "abort"
+strip = true
